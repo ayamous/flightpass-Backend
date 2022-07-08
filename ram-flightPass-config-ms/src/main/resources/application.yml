@@ -1,0 +1,38 @@
+
+# CONFIGSERVER MICROSERVICE : Default Setting -----------------------------------------------------
+# ********************************************************************************************
+server.port: 8012
+spring.application.name: config-server
+
+
+eureka:
+  instance:
+    hostname: config-server
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://${eureka.uri:localhost}:${eureka.port:8761}/eureka/
+
+#spring:
+ # cloud:
+  #  config:
+   #   server.git:
+    #    clone-on-start: false
+     #   username: k.oussama
+      #  password: ramtatconfig
+       # default.label: master
+        #uri: https://gitlab.com/ram-upgrade/config-server.git  
+      #profile: prod
+
+spring:
+  cloud:
+   config:
+      server.git:
+        clone-on-start: false
+        username: Redouane
+        password: r.elaouni.itroad
+        default.label: master
+        uri: http://gitlab.itroad.ma/Redouane/ram-flightpass-config.git
+      profile: dev

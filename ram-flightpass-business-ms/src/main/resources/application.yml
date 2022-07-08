@@ -1,0 +1,115 @@
+spring.config.import: optional:configserver:http://localhost:8012
+spring.application.name: business
+spring.cloud.config.profile: test
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/auth/realms/flightpass-realm
+          jwk-set-uri: http://localhost:8080/auth/realms/flightpass-realm/protocol/openid-connect/certs
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: redouane.elaouni@edu.uca.ac.ma
+    password: wkjrlkrziayqodgv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: "*"
+
+server:
+  error:
+    include-message: always
+  port: 8082
+#  servlet:
+#    context-path: /business
+name:
+  first: wahid
+file:
+  uploadDir: /assets/images
+
+
+#keycloak:
+#  realm: flightpass-realm
+#  auth-server-url: http://localhost:8086/auth
+#  resource: ram-flightpass-back
+#  public-client: false
+#  bearer-only: true
+#  credentials:
+#    secret: c91773a7-7ee0-4941-9c8d-715c3f5e7172
+#  use-resource-role-mappings: true
+#  policy-enforcer-config:
+#    enforcement-mode: ENFORCING
+#      security-constraints:
+#          - auth-roles:
+#            - "*"
+#            security-collections:
+#              - name:
+#                patterns:
+#                  - /*
+
+
+keycloak:
+  realm: flightpass-realm
+  auth-server-url: http://localhost:8080/auth
+  resource: ram-flightpass-back
+  credentials:
+    secret: ddf1def6-ea66-4c44-962d-96ed2f545f9a
+  principal-attribute: preferred_username
+  use-resource-role-mappings: true
+  policy-enforcer-config:
+    #    enforcement-mode: ENFORCING
+    paths:
+      - name: insecure Resource
+        path: /public/*
+        enforcement-mode: DISABLED
+  #      - name: secure Resource
+  #        path: /*
+  #        enforcement-mode: ENFORCING
+
+  security-constraints:
+    - auth-roles:
+        - "*"
+      security-collections:
+        - name:
+          patterns:
+            - /business/*
+logging:
+  level:
+    org:
+      keycloak: DEBUG
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: TRACE
+keycloak-add-on:
+  unprotectedpaths: ${KEYCLOAK_UNPROTECTED_PATHS:/foo/**, /actuator/**}
+
+guest:
+  id: 1af0881a-4b8b-4662-946e-a25512b32748
+
+admin-keycloak:
+  username: redouane.elaouni@edu.uca.ac.ma
+  password: admin
+  realm: flightpass-realm
+  auth-server-url: http://localhost:8080/auth
+  resource: admin-cli

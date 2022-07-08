@@ -1,0 +1,12 @@
+server:
+  port: 8083
+
+keycloak:
+  realm: flightpass-realm
+  auth-server-url: http://localhost:8080/auth
+  bearer-only: true
+  resource: admin-cli
+
+admin:
+  username : redouane.elaouni@edu.uca.ac.ma
+  password : admin

@@ -1,0 +1,27 @@
+server:
+  port: 8086
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: keycloak
+    password: keycloak
+    driverClassName: oracle.jdbc.OracleDriver
+    hikari:
+      schema: keycloak
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    properties:
+      hibernate.integration.envers.enabled: false
+    hibernate:
+      ddl-auto: update
+      
+keycloak:
+  server:
+    contextPath: /auth
+    adminUser:
+      username: flightPass-admin
+      password: pass
+    realmImportFile: application-realm.json

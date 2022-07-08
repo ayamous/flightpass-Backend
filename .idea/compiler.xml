@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ram-flightPas-config-ms" />
+        <module name="ram-flightPass-gateway-ms" />
+        <module name="embedded-keycloak-ms" />
+        <module name="ram-flightPass-discovery-ms" />
+        <module name="ram-flightpass-user-management-ms" />
+      </profile>
+      <profile name="Annotation profile for POM-PARENT" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.1.0/lombok-mapstruct-binding-0.1.0.jar" />
+        </processorPath>
+        <module name="ram-flightpass-business-ms" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="user-management-ms" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="embedded-keycloak-ms" options="-parameters" />
+      <module name="ram-flightPas-config-ms" options="-parameters" />
+      <module name="ram-flightPass-discovery-ms" options="-parameters" />
+      <module name="ram-flightPass-gateway-ms" options="-parameters" />
+      <module name="ram-flightpass-business-ms" options="-parameters" />
+      <module name="ram-flightpass-user-management-ms" options="-parameters" />
+      <module name="user-management-ms" options="-parameters" />
+    </option>
+  </component>
+</project>
